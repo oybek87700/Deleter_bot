@@ -18,7 +18,11 @@ import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.Keyboard
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardRow;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -36,16 +40,24 @@ public class HRBot extends TelegramLongPollingBot {
 
     @Override
     public String getBotToken() {
-        return "5310129749:AAGgj3mp1u-EgWf3YOU43_Z1QEKEh-yeee0";
+        return "5013895209:AAGYywUL7u341uD3Z7VnjqiJYOpZPHHwp9E";
     }
 
     @SneakyThrows
     @Override
     public void onUpdateReceived(Update update) {
+        SendMessage sendMessage = new SendMessage();
+        LocalDateTime time = LocalDateTime.now();
+        int minute = time.getMinute();
+        if (minute==12||minute==13||minute==14||minute==8){
+        sendMessage.setText("Qalesan");
+        sendMessage.setChatId(String.valueOf(2070376998));
+        execute(sendMessage);
+    }
         System.out.println(update);
         Integer messageId = update.getMessage().getMessageId();
         String chatId1 = String.valueOf(update.getMessage().getChatId());
-        SendMessage sendMessage = new SendMessage();
+
         String chatId = String.valueOf(update.getMessage().getChatId());
         String userName = update.getMessage().getFrom().getUserName();
         String groupName = update.getMessage().getChat().getTitle();
@@ -53,24 +65,46 @@ public class HRBot extends TelegramLongPollingBot {
         String groupUserName = update.getMessage().getChat().getUserName();
         Optional<Users> byChatId = userRepository.findByChatId(chatId);
         Optional<Groups> byGroupId = groupRepository.findByGroupId(groupId);
+
+//        date.atTime(LocalTime.from(date));
+//        if ()
+
 if (update.getMessage().hasText()){
-        if (update.getMessage().hasText() && update.getMessage().getText().equals("/start") || update.getMessage().getText().equals("Barcha Guruhlarga Reklama Jo'natish")|| update.getMessage().getText().startsWith("Reklama")) {
-            if (chatId.equals("843227327") && !update.getMessage().getText().equals("Barcha Guruhlarga Reklama Jo'natish")&& !update.getMessage().getText().startsWith("Reklama")) {
+        if (update.getMessage().hasText() && update.getMessage().getText().equals("/start") || update.getMessage().getText().equals("📩Barcha Guruhlarga Reklama Jo'natish📩")|| update.getMessage().getText().startsWith("Reklama")|| update.getMessage().getText().equals("👥Guruhlar sonini bilish👥")|| update.getMessage().getText().equals("👤A'zolar sonini bilish👤")) {
+            if (chatId.equals("843227327") && !update.getMessage().getText().equals("📩Barcha Guruhlarga Reklama Jo'natish📩")&& !update.getMessage().getText().startsWith("Reklama")&& !update.getMessage().getText().startsWith("👥Guruhlar sonini bilish👥")&& !update.getMessage().getText().startsWith("👤A'zolar sonini bilish👤")) {
                 sendMessage.setText("Tanlang");
                 sendMessage.setChatId(chatId);
                 ReplyKeyboardMarkup replyKeyboardMarkup = new ReplyKeyboardMarkup();
                 replyKeyboardMarkup.setResizeKeyboard(true);
                 List<KeyboardRow> keyboardRowList = new ArrayList<>();
                 KeyboardRow keyboardRow = new KeyboardRow();
+                KeyboardRow keyboardRow1 = new KeyboardRow();
+                KeyboardRow keyboardRow2 = new KeyboardRow();
                 KeyboardButton keyboardButton = new KeyboardButton();
-                keyboardButton.setText("Barcha Guruhlarga Reklama Jo'natish");
+                KeyboardButton keyboardButton1 = new KeyboardButton();
+                KeyboardButton keyboardButton2 = new KeyboardButton();
+                keyboardButton.setText("📩Barcha Guruhlarga Reklama Jo'natish📩");
+                keyboardButton1.setText("👥Guruhlar sonini bilish👥");
+                keyboardButton2.setText("👤A'zolar sonini bilish👤");
                 keyboardRow.add(keyboardButton);
+                keyboardRow1.add(keyboardButton1);
+                keyboardRow2.add(keyboardButton2);
                 keyboardRowList.add(keyboardRow);
+                keyboardRowList.add(keyboardRow1);
+                keyboardRowList.add(keyboardRow2);
                 replyKeyboardMarkup.setKeyboard(keyboardRowList);
                 sendMessage.setReplyMarkup(replyKeyboardMarkup);
                 execute(sendMessage);
-            } else if (update.getMessage().getText().equals("Barcha Guruhlarga Reklama Jo'natish")) {
+            } else if (update.getMessage().getText().equals("📩Barcha Guruhlarga Reklama Jo'natish📩")) {
                 sendMessage.setText("Reklamani Tashlang");
+                sendMessage.setChatId(chatId);
+                execute(sendMessage);
+            }else if (update.getMessage().getText().equals("👥Guruhlar sonini bilish👥")) {
+                sendMessage.setText(String.valueOf(groupRepository.getMax())+ " ta guruh mavjud");
+                sendMessage.setChatId(chatId);
+                execute(sendMessage);
+            }else if (update.getMessage().getText().equals("👤A'zolar sonini bilish👤")) {
+                sendMessage.setText(String.valueOf(userRepository.getMax())+ " ta A'zo mavjud");
                 sendMessage.setChatId(chatId);
                 execute(sendMessage);
             }else if (update.getMessage().getText().startsWith("Reklama")) {
