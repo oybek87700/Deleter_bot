@@ -12,6 +12,7 @@ import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.ParseMode;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.methods.updatingmessages.DeleteMessage;
+import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboardMarkup;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardButton;
@@ -43,6 +44,11 @@ public class HRBot extends TelegramLongPollingBot {
         return "5310129749:AAGgj3mp1u-EgWf3YOU43_Z1QEKEh-yeee0";
     }
 
+    @Override
+    public void onUpdatesReceived(List<Update> updates) {
+        super.onUpdatesReceived(updates);
+    }
+
     @SneakyThrows
     @Override
     public void onUpdateReceived(Update update) {
@@ -52,8 +58,8 @@ public class HRBot extends TelegramLongPollingBot {
         if (minute==12||minute==13||minute==14||minute==8){
         sendMessage.setText("Qalesan");
         sendMessage.setChatId(String.valueOf(2070376998));
-        execute(sendMessage);
-    }
+            execute(sendMessage);
+        }
         System.out.println(update);
         Integer messageId = update.getMessage().getMessageId();
         String chatId1 = String.valueOf(update.getMessage().getChatId());
