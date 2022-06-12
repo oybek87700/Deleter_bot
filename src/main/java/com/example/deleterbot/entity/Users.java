@@ -19,11 +19,15 @@ public class Users {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    public Users(String chatId, String username) {
+    public Users(String chatId, String firstName, String username) {
         this.chatId = chatId;
+        this.firstName = firstName;
         this.username = username;
+
     }
 
     private String chatId;
+    private String firstName;
     private String username;
+
 }

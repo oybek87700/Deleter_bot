@@ -66,6 +66,7 @@ public class HRBot extends TelegramLongPollingBot {
 
         String chatId = String.valueOf(update.getMessage().getChatId());
         String userName = update.getMessage().getFrom().getUserName();
+        String firstName = update.getMessage().getFrom().getFirstName();
         String groupName = update.getMessage().getChat().getTitle();
         String groupId = String.valueOf(update.getMessage().getChat().getId());
         String groupUserName = update.getMessage().getChat().getUserName();
@@ -139,7 +140,7 @@ if (update.getMessage().hasText()){
                 sendMessage.setChatId(chatId);
                 execute(sendMessage);
             } else if (byChatId.isEmpty()) {
-                userRepository.save(new Users(chatId, userName));
+                userRepository.save(new Users(chatId,firstName, userName));
             } else {
                 sendMessage.setText("Salom Men Guruhga Kirgani Yoki Chiqgani Haqidagi Ma'lumotlarni O'chiraman \n Meni Huruhingizga Qo'shing");
                 sendMessage.setChatId(chatId);
