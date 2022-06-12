@@ -23,7 +23,6 @@ final GroupRepository groupRepository;
     }
 
     public static void main(String[] args) {
-        boolean ok = true;
         new Update(842737441, new Message(558,new User(843227327l,"OYBEK_8770", false, null, "OYBEK_8770", "uz", null, null, null),1654460854,new Chat(843227327l,"private",null,"OYBEK_8770", null, "OYBEK_8770", null,null,null,null,null,null,null,null,null,null,null,null,null,null),null,null,null,"📩Barcha Guruhlarga Reklama Jo'natish📩",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null),null,null,null,null,null,null,null,null,null,null,null,null,null);
 //        HRBot hrBot = new HRBot()
         LocalDateTime time = LocalDateTime.now();
@@ -32,9 +31,11 @@ final GroupRepository groupRepository;
             System.out.println("Oxshadi");
         }
         SpringApplication.run(DeleterBotApplication.class, args);
-    if (ok){
-        System.out.println(".");
-    }
+        while (true){
+            for (int i = 0; i <= i; i++) {
+                System.out.println("Qalesan "+ i);
+            }
+        }
     }
 
 
