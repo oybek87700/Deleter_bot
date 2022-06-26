@@ -31,11 +31,11 @@ final GroupRepository groupRepository;
             System.out.println("Oxshadi");
         }
         SpringApplication.run(DeleterBotApplication.class, args);
-        while (true){
-            for (int i = 0; i <= i; i++) {
-                System.out.println("Qalesan "+ i);
-            }
-        }
+//        while (true){
+//            for (int i = 0; i <= i; i++) {
+//                System.out.println("Qalesan "+ i);
+//            }
+//        }
     }
 
 

@@ -77,7 +77,7 @@ public class HRBot extends TelegramLongPollingBot {
 //        if ()
 
 if (update.getMessage().hasText()){
-        if (update.getMessage().hasText() && update.getMessage().getText().equals("/start") || update.getMessage().getText().equals("📩Barcha Guruhlarga Reklama Jo'natish📩")|| update.getMessage().getText().startsWith("Reklama")|| update.getMessage().getText().equals("👥Guruhlar sonini bilish👥")|| update.getMessage().getText().equals("👤A'zolar sonini bilish👤")) {
+        if (update.getMessage().hasText() && update.getMessage().getText().equals("/start")&&update.getMessage().hasText() && update.getMessage().getText().equals("/start")&& chatId.equals("843227327") || update.getMessage().getText().equals("📩Barcha Guruhlarga Reklama Jo'natish📩")|| update.getMessage().getText().startsWith("Reklama")|| update.getMessage().getText().equals("👥Guruhlar sonini bilish👥")|| update.getMessage().getText().equals("👤A'zolar sonini bilish👤")) {
             if (chatId.equals("843227327") && !update.getMessage().getText().equals("📩Barcha Guruhlarga Reklama Jo'natish📩")&& !update.getMessage().getText().startsWith("Reklama")&& !update.getMessage().getText().startsWith("👥Guruhlar sonini bilish👥")&& !update.getMessage().getText().startsWith("👤A'zolar sonini bilish👤")) {
                 sendMessage.setText("Tanlang");
                 sendMessage.setChatId(chatId);
