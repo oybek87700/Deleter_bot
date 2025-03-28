@@ -42,12 +42,12 @@ public class HRBot extends TelegramLongPollingBot {
 
     @Override
     public String getBotUsername() {
-        return "Api_name_bot";
+        return "join_delete_by_Oybek_bot";
     }
 
     @Override
     public String getBotToken() {
-        return "5013895209:AAGYywUL7u341uD3Z7VnjqiJYOpZPHHwp9E";
+        return "5310129749:AAHamAM4Y6rVe6IxISMbb5Jab_tWeTIZWJI";
     }
 
     @Override
