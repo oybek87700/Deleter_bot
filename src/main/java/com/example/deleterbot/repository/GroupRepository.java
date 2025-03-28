@@ -1,7 +1,6 @@
 package com.example.deleterbot.repository;
 
 import com.example.deleterbot.entity.Groups;
-import com.example.deleterbot.entity.Users;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
